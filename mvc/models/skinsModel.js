@@ -1,16 +1,21 @@
-const Skin = {
-    name: "",
-    description: "",
-    foto: "",
-    seeInfo: function(){
-        return `${this.name} and ${this.description}`
-    },
-    toJSON: function(){
-        return{
-        "name": this.name,
-        "description": this.description,
-        "foto": this.foto
-        }
+const Db = require("../../repository/database")
+class Skin {
+    nome
+    descricao
+    raridade
+
+    constructor(nome, descricao, raridade){
+        this.nome = nome
+        this.descricao = descricao
+        this.raridade = raridade
+    }
+
+    getAllSkins(){
+        const db = new Db()
+
+        db.getConnection().query("SELECT * FROM SKINS", (err, results, fields) =>{
+            console.log(results)
+        })
     }
 }
 module.exports = Skin

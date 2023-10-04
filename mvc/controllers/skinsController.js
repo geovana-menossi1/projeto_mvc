@@ -1,16 +1,12 @@
-const app = require("../../startup")
-const SkinModel = require("../models/skinsModel")
-const path = require("path")
+const Skin = require("../models/skinsModel")
 
-app.get("/getSkin", (req,res) =>{
-    const item = SkinModel
+module.exports = (app) => {
 
-    item.name = "Chapéu"
-    item.description = "Chapéu de palha roxo"
+app.get("/getSkin", (req, res)=>{
+    const skin =  new Skin("Chapéu Eldorado","Sei lá",10)
 
-    res.json(item.toJSON())
+    skin.getAllSkins()
+    res.send("Nome: "+skin.nome)
 })
+}
 
-app.get("/telaSkin", (req,res) =>{
-    res.sendFile(path.resolve("mvc/views/stand/skinsView.html"))
-})
