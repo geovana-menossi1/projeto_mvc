@@ -1,6 +1,6 @@
 const mysql = require(mysql2)
 
-class Database{
+class Database5{
     connection
 
     constructor(){
@@ -16,4 +16,4 @@ class Database{
         return this.connection
     }
 }
-module.exports = Database
+module.exports = Database5
